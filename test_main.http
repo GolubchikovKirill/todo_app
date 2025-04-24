@@ -1,11 +1,34 @@
-# Test your FastAPI endpoints
+### Create a new task
+POST http://localhost:8000/tasks/
+Content-Type: application/json
 
-GET http://127.0.0.1:8000/
+{
+  "title": "Test Task",
+  "description": "This is a test task",
+  "status": "pending"
+}
+
+### Get all tasks
+GET http://localhost:8000/tasks/
 Accept: application/json
 
-###
-
-GET http://127.0.0.1:8000/hello/User
+### Get all tasks with status filter
+GET http://localhost:8000/tasks?status=pending
 Accept: application/json
 
-###
+### Get a task by ID (change {{task_id}} to real one after create)
+GET http://localhost:8000/tasks/1
+Accept: application/json
+
+### Update a task (change {{task_id}} to real one)
+PUT http://localhost:8000/tasks/1
+Content-Type: application/json
+
+{
+  "title": "Updated Test Task",
+  "description": "Updated description",
+  "status": "completed"
+}
+
+### Delete a task (change {{task_id}} to real one)
+DELETE http://localhost:8000/tasks/1

@@ -1,23 +1,22 @@
 from pydantic import BaseModel
-from typing import Optional
 from datetime import datetime
+from typing import Optional
 
 class TaskCreate(BaseModel):
     title: str
     description: Optional[str] = None
-    due_date: Optional[datetime] = None
+    deadline: datetime
+    status: str
 
 class TaskUpdate(BaseModel):
     title: Optional[str] = None
     description: Optional[str] = None
-    due_date: Optional[datetime] = None
-    is_completed: Optional[bool] = None
+    deadline: Optional[datetime] = None
+    status: Optional[str] = None
 
 class TaskOut(BaseModel):
     id: int
     title: str
-    description: Optional[str]
-    is_completed: bool
-    created_at: datetime
-    due_date: Optional[datetime]
-    user_id: int
+    description: Optional[str] = None
+    deadline: datetime
+    status: str
